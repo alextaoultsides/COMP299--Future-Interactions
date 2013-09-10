@@ -5,3 +5,6 @@ Leap motion/Google Glass/Pebble/VR
 
 
 woooo!
+
+Alex, Destiny & Meghan
+
