@@ -15,8 +15,8 @@ class applistener(Leap.Listener):
     def on_init(self,controller):#Initializes pygame and display surface
         pygame.init()
         x = y = 0
-        self.horiz = 1280 #Display horizontal pixels
-        self.vert = 720   #Display vertical pixels
+        self.horiz = 640 #Display horizontal pixels
+        self.vert = 480   #Display vertical pixels
         self.display_surf = pygame.display.set_mode((self.horiz,self.vert), pygame.HWSURFACE) #sets hardware surface
         self._running = True 
         #self._image_surf = pygame.image.load("myimage.jpg").convert()
@@ -103,13 +103,13 @@ def main():
     
     
     controller = Leap.Controller()
-    applistener = applistener()
-    controller.add_listener(applistener)
+    applistener1 = applistener()
+    controller.add_listener(applistener1)
     
     print "Press Enter to quit..."
     sys.stdin.readline()
     
-    controller.remove_listener(applistener)
+    controller.remove_listener(applistener1)
     
     
 if __name__ == "__main__":
