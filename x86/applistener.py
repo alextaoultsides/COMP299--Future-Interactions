@@ -12,7 +12,7 @@ if not pygame.font: print 'Warning, fonts disabled'
 if not pygame.mixer: print 'Warning, sound disabled'
 class sounder:
     def __init__(self):
-        self.a = 0
+        self.a = 0 
         
     def player(self,freq_l):
         bits = 16
