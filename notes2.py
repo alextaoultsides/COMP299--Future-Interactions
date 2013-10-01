@@ -17,16 +17,20 @@ FrereJaques = ['C4', 'D4', 'E4', 'C4', 'C4', 'D4', 'E4', 'C4', 'E4', 'F4', 'G4',
 
 MaryLittleLamb = ['A4', 'G4', 'F4', 'G4', 'A4', 'A4', 'A4', 'G4', 'G4', 'G4', 'A4', 'C5', 'C5', ' ', 'A4', 'G4', 'F4', 'G4', 'A4', 'A4', 'A4', 'A4', 'G4', 'G4', 'A4', 'G4', 'F4']
 
+
+
 SongOfStorms = ['D3', 'F3', 'D4','D3', 'F3', 'D4', 'E4', 'F4', 'E4', 'F4', 'E4', 'C4', 'A3', 'A3', 'D3', 'D3', 'F3', 'A3', 'A3', 'D3', 'F3', 'G3', 'E3']
 
+#TwinkleStar['C4', 'C4', 'G4', 'G4']
 #-------------------------------------------------------------------
 
 def playSong(song):
-    
+    time = 1000
     note = 0 #index number in song's list of note names
     for note in song:
         freq = NOTES_2_FREQ.get(note)
-        winsound.Beep(freq, 500) 
+        winsound.Beep(freq, time)
+        time = time - 50
 
 def main():
     
