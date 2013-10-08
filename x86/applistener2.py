@@ -16,6 +16,10 @@ playsound = USEREVENT + 1
 pygame.time.set_timer(playsound, 1000)
 horiz = 640
 vert = 480
+
+background = pygame.image.load("notesbackground.png") #image from: Daniel Paxton. http://www.flickr.com/photos/allthatimprobableblue/5426125324/in/photostream/
+pattern = pygame.image.load("4-4pattern.png")#image from: http://method-behind-the-music.com/conducting/advanced
+
 b = False
 pygame.init()
 display_surf = pygame.display.set_mode((horiz,vert), pygame.HWSURFACE) #sets hardware surface
@@ -204,11 +208,12 @@ class applistener(Leap.Listener):
             fingers2 = hand2.fingers # list of fingers from second hand
             if not frame.fingers.is_empty:#checks fingers
                 if not fingers1.is_empty: #checks if fingers from first hand are present
-                    self.display_surf.fill((0,0,0)) #fills the display surface with black
-                    pygame.draw.circle(display_surf,(255,0,0),(int(self.horiz * .5) ,int(480 * .25)), 20)
+                    self.display_surf.blit(background, (0,0)) #fills the display surface with image
+                    self.display_surf.blit(pattern, (450,10)) #displays conductiing pattern in the corner.
+                    pygame.draw.circle(display_surf,(168,54,245),(int(self.horiz * .5) ,int(480 * .25)), 20)
                     pygame.draw.circle(display_surf,(255,0,0),(int(self.horiz * .5) ,int(480 * .75)), 20)
-                    pygame.draw.circle(display_surf,(255,0,0),(int(self.horiz * .25) ,int(480 * .50)), 20)
-                    pygame.draw.circle(display_surf,(255,0,0),(int(self.horiz * .75) ,int(480 * .50)), 20)
+                    pygame.draw.circle(display_surf,(72,195,240),(int(self.horiz * .25) ,int(480 * .50)), 20)
+                    pygame.draw.circle(display_surf,(24,161,33),(int(self.horiz * .75) ,int(480 * .50)), 20)
                     tipx = int(fingers1[0].tip_position[0]) #takes the x coordinate of the first finger
                     tipy = int(fingers1[0].tip_position[1]) #takes the y coordinate of the second finger
                     
