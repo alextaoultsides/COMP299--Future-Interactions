@@ -1,12 +1,10 @@
-COMP299--Future-Interactions
+Project Broomstick
 ============================
-
-Leap motion/Google Glass/Pebble/VR
-
-Project Broomstick!
-
-Added applistener python file that uses pygame and Leap Motion
-able to control circle with Leap Motion movements
-
 Alex, Destiny & Meghan
+
+
+Working with the Leap Motion to create a musical conducting game!
+
+Added applistener python file that uses pygame.
+Leap Motion is able to control circle with movements above the leap
 
