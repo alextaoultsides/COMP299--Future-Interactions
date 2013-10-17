@@ -18,7 +18,12 @@ head{
 h1{
 	text-align: center;
 	font-size: 50px;
-	color:#F2799E;
+	color:#FF00FF;
+}
+
+h2{
+	text-align: center;
+	font-style: italic;
 }
 
 a {
@@ -34,3 +39,21 @@ a:hover {
 .git{
 	font-size: 30px;
 } 
+
+.Alex{
+	font-size: 18px;
+}
+
+.Destiny{
+	font-size: 18px;
+}
+
+.Meghan{
+	font-size: 18px;
+}
+
+h3{
+	font-size: 25px;
+	color:#00DD00;
+	text-decoration: underline;
+}
