@@ -6,7 +6,6 @@ import os
 import pygame
 import re
 import math
-import numpy
 import glob
 import time
 from pygame.locals import *

@@ -6,7 +6,6 @@ import os
 import pygame
 import re
 import math
-import numpy
 import glob
 import time
 from pygame.locals import *
@@ -22,7 +21,7 @@ pygame.midi.init()
 b = False
 pygame.init()
 
- #sets hardware surface
+#sets hardware surface
 resolutions = pygame.display.list_modes()
 horiz = int(resolutions[0][0] //1.5) 
 vert = int(resolutions[0][1]  // 1.5)
@@ -42,7 +41,7 @@ xs.load("C:mary.mid")
 
 class beatbox:
     def __init__(self,display_surf):
-	self.display_surf = display_surf
+        self.display_surf = display_surf
         xs.play()
         self.i = 0
         self.score = 0
@@ -71,15 +70,15 @@ class beatbox:
                 
             else:
                 self.beatCount = 0
-	    xs.set_volume(0.0)
+            xs.set_volume(0.0)
         if (self.beatArray[self.beatCount -1 ].collidepoint(x,y) and self.b == True):
             #pygame.draw.circle(display_surf,(255,0,0),(int(640 * .5) ,int(480 * .25)), 20 + 10)
             
-	    #pygame.mixer.music.load("C:pianos/Piano_mf_"+ songs[self.i][0] +".wav")#plays note using piano sample
-	    #pygame.mixer.music.play()
-	    xs.set_volume(.99)
-	    self.score += 1
-	    self.b = False   
+            #pygame.mixer.music.load("C:pianos/Piano_mf_"+ songs[self.i][0] +".wav")#plays note using piano sample
+            #pygame.mixer.music.play()
+            xs.set_volume(.99)
+            self.score += 1
+            self.b = False   
         if pygame.mixer.music.set_endevent():
             gamecontinue = False
             self.check_hit()
@@ -89,19 +88,19 @@ class beatbox:
         pass
     
     def blip(self):
-	b = 100
-	if(self.beatCount == 0 ):
-	    pygame.draw.circle(self.display_surf,(255,0,0),(int(horiz * .5) ,int(vert * .75)), 20 + b)
-	    
-	elif(self.beatCount == 1 ):
-	    pygame.draw.circle(self.display_surf,(73,195,240),(int(horiz * .25) ,int(vert * .50)), 20 + b)
-	    
-	elif(self.beatCount == 2 ):
-	    pygame.draw.circle(self.display_surf,(24,161,33),(int(horiz * .75) ,int(vert * .50)), 20 + b)
-	    
-	elif(self.beatCount == 3 ):
-	    pygame.draw.circle(self.display_surf,(168,54,245),(int(horiz * .5) ,int(vert * .25)), 20 + b)     
-	
+        b = 100
+        if(self.beatCount == 0 ):
+            pygame.draw.circle(self.display_surf,(255,0,0),(int(horiz * .5) ,int(vert * .75)), 20 + b)
+            
+        elif(self.beatCount == 1 ):
+            pygame.draw.circle(self.display_surf,(73,195,240),(int(horiz * .25) ,int(vert * .50)), 20 + b)
+            
+        elif(self.beatCount == 2 ):
+            pygame.draw.circle(self.display_surf,(24,161,33),(int(horiz * .75) ,int(vert * .50)), 20 + b)
+            
+        elif(self.beatCount == 3 ):
+            pygame.draw.circle(self.display_surf,(168,54,245),(int(horiz * .5) ,int(vert * .25)), 20 + b)     
+        
                 
 
         
@@ -111,10 +110,10 @@ class applistener(Leap.Listener):
     def on_init(self,controller):#Initializes pygame and display surface
         self.check = 0
         
-	self.directional = {}
-	self.directional['x'] = 0
-	self.directional['y'] = 0
-	self.directional['z'] = 0
+        self.directional = {}
+        self.directional['x'] = 0
+        self.directional['y'] = 0
+        self.directional['z'] = 0
         x = y = 0
         
         
@@ -173,11 +172,11 @@ class applistener(Leap.Listener):
                 if not fingers1.is_empty: #checks if fingers from first hand are present
                     
                     #print iBox.width , iBox.height
-		    screenPosition = iBox.normalize_point(fingers1[0].tip_position)
-		    self.directional['x'] = int(screenPosition[0] * horiz)
-		    self.directional['y'] = -(vert - int(screenPosition[1] * vert))
-		    #print self.directional['x'],self.directional['y']
-		    
+                    screenPosition = iBox.normalize_point(fingers1[0].tip_position)
+                    self.directional['x'] = int(screenPosition[0] * horiz)
+                    self.directional['y'] = -(vert - int(screenPosition[1] * vert))
+                    #print self.directional['x'],self.directional['y']
+                    
                     
         for gesture in frame.gestures(): #reads in a swipe gesture
             if gesture.type == Leap.Gesture.TYPE_SWIPE:
@@ -211,47 +210,47 @@ def midis():
 class menus:
     
     def __init__(self,display_surf):
-	pygame.font.init()
-	self.display_surf = display_surf
-	self.menu_index = 0
-	self.ButPress = 0
-	self.ButTimer = pygame.time
-	self.button = USEREVENT + 1
-	self.ButTimer.set_timer(self.button, 2500)	
+        pygame.font.init()
+        self.display_surf = display_surf
+        self.menu_index = 0
+        self.ButPress = 0
+        self.ButTimer = pygame.time
+        self.button = USEREVENT + 1
+        self.ButTimer.set_timer(self.button, 2500)        
     def main_menu(self,listener,controller):
-	for event in pygame.event.get():
-	    if event.type == pygame.QUIT:
-		controller.remove_listener(listener)
-		pygame.quit()
-		sys.exit()	
-	fonts = pygame.font.Font(None,72)
-	text = fonts.render("Project Broomstick!",1,(0,255,255))
-	play = fonts.render("Play",1,(0,255,255))
-	instruct = fonts.render("Instructions",1,(0,255,255))
-	self.display_surf.fill((0,0,0))
-	self.display_surf.blit(text,(horiz * .35,vert * .25))
-	self.display_surf.blit(play,(horiz * .35,vert * .75))
-	pygame.draw.circle(self.display_surf,(0,255,0),(listener.directional['x'] ,-(listener.directional['y']) ), 10)
-	playButton = pygame.Rect(0,0,72,200)
-	playButton.center = (int(horiz *.35),int(vert * .75))
-	
-	if playButton.collidepoint(listener.directional['x'],-(listener.directional['y'])):
-	    pygame.draw.circle(self.display_surf,(0,255,0),(listener.directional['x'] ,-(listener.directional['y']) ), 10)
-	   
-	    print "hello"
-	    self.ButPress = 1
-	    if pygame.event.get(self.button):
-		print "hello"
-		self.menu_index = 1    	    
-	else:
-	    self.ButPress = 0
-	    
-	    
-	pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                controller.remove_listener(listener)
+                pygame.quit()
+                sys.exit()        
+        fonts = pygame.font.Font(None,72)
+        text = fonts.render("Project Broomstick!",1,(0,255,255))
+        play = fonts.render("Play",1,(0,255,255))
+        instruct = fonts.render("Instructions",1,(0,255,255))
+        self.display_surf.fill((0,0,0))
+        self.display_surf.blit(text,(horiz * .35,vert * .25))
+        self.display_surf.blit(play,(horiz * .35,vert * .75))
+        pygame.draw.circle(self.display_surf,(0,255,0),(listener.directional['x'] ,-(listener.directional['y']) ), 10)
+        playButton = pygame.Rect(0,0,72,200)
+        playButton.center = (int(horiz *.35),int(vert * .75))
+        
+        if playButton.collidepoint(listener.directional['x'],-(listener.directional['y'])):
+            pygame.draw.circle(self.display_surf,(0,255,0),(listener.directional['x'] ,-(listener.directional['y']) ), 10)
+           
+            print "hello"
+            self.ButPress = 1
+            if pygame.event.get(self.button):
+                print "hello"
+                self.menu_index = 1                
+        else:
+            self.ButPress = 0
+            
+            
+        pygame.display.flip()
     
     def buttonPress(self):
-	
-	return self.menu_index
+        
+        return self.menu_index
 def pygameLoop(controller, listener):
     check = 0
     
@@ -266,30 +265,30 @@ def pygameLoop(controller, listener):
     timerz = 0
     
     while True:
-	for event in pygame.event.get():
-	    if event.type == pygame.QUIT:
-		controller.remove_listener(listener)
-		pygame.quit()
-		sys.exit()
-	while(menu.menu_index == 0):
-	    menu.main_menu(listener,controller)
-	display_surf.fill((0,0,0)) #fills the display surface with black
-	display_surf.blit(pattern, ((horiz * .5) + 200, 10))
-	pygame.draw.circle(display_surf,(168,54,245),(int(horiz * .5) ,int(vert * .25)), 100)
-	pygame.draw.circle(display_surf,(255,0,0),(int(horiz * .5) ,int(vert * .75)), 100)
-	pygame.draw.circle(display_surf,(73,195,240),(int(horiz * .25) ,int(vert * .50)), 100)
-	pygame.draw.circle(display_surf,(24,161,33),(int(horiz * .75) ,int(vert * .50)), 100)
-	pygame.draw.circle(display_surf,(0,255,0),(listener.directional['x'] ,-(listener.directional['y']) ), 10)#prints a circle on the screen
-	#print listener.directional['x']
-	#print -(listener.directional['y'])
-	
-	if gamecontinue == True:
-	    beatboxes.blip()
-	    beatboxes.interaction(listener.directional['x'], -(listener.directional['y']))
-	    
-	pygame.draw.circle(display_surf,(0,255,0),(listener.directional['x'] ,-(listener.directional['y']) ), 10)#prints a circle on the screen    
-	#midis()
-	pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                controller.remove_listener(listener)
+                pygame.quit()
+                sys.exit()
+        while(menu.menu_index == 0):
+            menu.main_menu(listener,controller)
+        display_surf.fill((0,0,0)) #fills the display surface with black
+        display_surf.blit(pattern, ((horiz * .5) + 200, 10))
+        pygame.draw.circle(display_surf,(168,54,245),(int(horiz * .5) ,int(vert * .25)), 100)
+        pygame.draw.circle(display_surf,(255,0,0),(int(horiz * .5) ,int(vert * .75)), 100)
+        pygame.draw.circle(display_surf,(73,195,240),(int(horiz * .25) ,int(vert * .50)), 100)
+        pygame.draw.circle(display_surf,(24,161,33),(int(horiz * .75) ,int(vert * .50)), 100)
+        pygame.draw.circle(display_surf,(0,255,0),(listener.directional['x'] ,-(listener.directional['y']) ), 10)#prints a circle on the screen
+        #print listener.directional['x']
+        #print -(listener.directional['y'])
+        
+        if gamecontinue == True:
+            beatboxes.blip()
+            beatboxes.interaction(listener.directional['x'], -(listener.directional['y']))
+            
+        pygame.draw.circle(display_surf,(0,255,0),(listener.directional['x'] ,-(listener.directional['y']) ), 10)#prints a circle on the screen    
+        #midis()
+        pygame.display.flip()
 
 def main():
     

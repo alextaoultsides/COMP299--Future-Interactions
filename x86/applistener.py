@@ -5,11 +5,8 @@ from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 import os
 import pygame
 import math
-import numpy
 from pygame.locals import *
 
-if not pygame.font: print 'Warning, fonts disabled'
-if not pygame.mixer: print 'Warning, sound disabled'
 class sounder:
     def __init__(self):
         self.a = 0 

@@ -1,0 +1,68 @@
+div{
+	position: relative;
+}
+
+body
+{
+	background-color:white;
+	color:#FF00DE;
+}
+h1
+{
+	background-color:#FFFFFF;
+	color:#FF00DE;
+}
+p
+{
+	background-color:rgb(255,255,255);
+}
+
+h2 {color:rgb(255,51,255);}
+
+body .bodytext p {
+	font-size:30px;
+}
+
+#logo{
+	width:100%;
+	text-align: center;
+}
+#logo img {
+	width: 75%;
+	height: auto;
+}
+
+a {
+	color: #00DD00;
+}
+a:visited {
+	color:#009900;
+}
+a:hover {
+	color:#993399;
+}
+.intro .heading{
+	text-align: center;
+	text-decoration: underline;
+	color:#00DD00;
+}
+.features {
+	text-align: center;
+}
+.container{
+	height: 800px;
+	width:100%;
+	font-size: 25px;
+}
+
+#contactInfo{
+	color:#00DD00;
+	border:1px dotted pink;
+	height: 40px;
+	width:100%;
+	position: bottom;
+	float: left;
+	font-weight: bold;
+	/*left:0;*/
+	/*bottom:0;*/
+}
